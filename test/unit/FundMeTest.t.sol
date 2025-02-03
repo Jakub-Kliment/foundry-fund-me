@@ -49,7 +49,7 @@ contract FundMeTest is Test {
     function testFundUpdatesFundedDataStructure() public {
         vm.prank(USER); // next tx will be done by USER
         fundMe.fund{value: SEND_VALUE}();
-        
+
         uint256 amountFunded = fundMe.getAddressToAmountFunded(USER);
         assertEq(amountFunded, SEND_VALUE);
     }
@@ -57,7 +57,7 @@ contract FundMeTest is Test {
     function testAddsFundersToArrayOfFunders() public {
         vm.prank(USER); // next tx will be done by USER
         fundMe.fund{value: SEND_VALUE}();
-        
+
         address funder = fundMe.getFunder(0);
         assertEq(funder, USER);
     }
@@ -97,7 +97,7 @@ contract FundMeTest is Test {
     }
 
     function testWithdrawFromMultipleFunders() public funded {
-        uint160 numberOfFunders = 10; // uint160 to match number for address 
+        uint160 numberOfFunders = 10; // uint160 to match number for address
         uint160 startingFunderIndex = 1; // 0 address can revert
         for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
             hoax(address(i), SEND_VALUE); // vm.prank(); + vm.deal();
@@ -116,7 +116,7 @@ contract FundMeTest is Test {
     }
 
     function testWithdrawFromMultipleFundersCheaper() public funded {
-        uint160 numberOfFunders = 10; // uint160 to match number for address 
+        uint160 numberOfFunders = 10; // uint160 to match number for address
         uint160 startingFunderIndex = 1; // 0 address can revert
         for (uint160 i = startingFunderIndex; i < numberOfFunders; i++) {
             hoax(address(i), SEND_VALUE); // vm.prank(); + vm.deal();

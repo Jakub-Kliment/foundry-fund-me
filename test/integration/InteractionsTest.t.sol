@@ -31,5 +31,4 @@ contract InteractionsTest is Test {
 
         assertEq(address(fundMe).balance, 0);
     }
-    
 }

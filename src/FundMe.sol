@@ -10,7 +10,7 @@ error FundMe__NotOwner();
 contract FundMe {
     using PriceConverter for uint256;
 
-    // State variable -> 
+    // State variable ->
     mapping(address => uint256) private s_addressToAmountFunded;
     address[] private s_funders;
 
